@@ -1,0 +1,28 @@
+{
+    "$schema": "https://json.schemastore.org/swcrc",
+    "exclude": [
+        "node_modules",
+        "dist",
+        ".eslintrc.js",
+        ".prettierc.js"
+    ],
+    "jsc": {
+        "baseUrl": "./",
+        "target": "es2020",
+        "parser": {
+            "syntax": "typescript",
+            "decorators": false,
+            "dynamicImport": false
+        },
+        "externalHelpers": false,
+        "paths": {
+            "@src/*": [
+                "./src/*"
+            ]
+        }
+    },
+    "sourceMaps": true,
+    "module": {
+        "type": "commonjs"
+    }
+}
