@@ -1,0 +1,25 @@
+name: Build Test # Github Action 페이지 좌측 리스트에 표시될 이름
+on:
+  push:
+    branches: [develop, feature/**]
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  # Build Apps
+  node-build-test:
+    name: Node Build Test
+    secrets: inherit
+    uses: ./.github/workflows/node-build-reuseable.yaml
+    with:
+      env: test
+
+  # Docker Build Apps
+  docker-build-test:
+    name: Docker Build Test
+    needs: [node-build-test]
+    secrets: inherit
+    uses: ./.github/workflows/docker-build-reuseable.yaml
+    with:
+      env: test
