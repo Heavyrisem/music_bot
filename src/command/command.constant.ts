@@ -6,11 +6,12 @@ export enum Command {
   SKIP_1 = 's',
   STOP = '정지',
   STOP_1 = 'q',
-  VOLUME = '볼륨',
-  VOLUME_1 = 'v',
+  // VOLUME = '볼륨',
+  // VOLUME_1 = 'v',
   QUEUE = '큐',
+  TEST = '테스트',
 }
 export enum CommandArgs {
   MUSIC_META = '검색어',
-  VOLUME = '볼륨',
+  // VOLUME = '볼륨',
 }
