@@ -1,4 +1,7 @@
+import { configDotenv } from 'dotenv';
 import z from 'zod';
+
+configDotenv();
 
 const environmentSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']),
