@@ -1,0 +1,22 @@
+name: Deploy # Github Action 페이지 좌측 리스트에 표시될 이름
+on:
+  push:
+    branches: [master]
+
+jobs:
+  # Build Apps
+  node-build:
+    name: Node Build
+    secrets: inherit
+    uses: ./.github/workflows/node-build-reuseable.yaml
+    with:
+      env: production
+
+  # Docker Build Apps
+  docker-build:
+    name: Docker Build
+    needs: [node-build]
+    secrets: inherit
+    uses: ./.github/workflows/docker-build-reuseable.yaml
+    with:
+      env: production
