@@ -6,6 +6,7 @@ import {
   createAudioPlayer,
   createAudioResource,
   entersState,
+  getVoiceConnection,
   joinVoiceChannel,
 } from '@discordjs/voice';
 import { CacheType, ChatInputCommandInteraction, VoiceBasedChannel } from 'discord.js';
@@ -51,6 +52,10 @@ export class MusicManager {
   skipCurrent() {
     this.player.stop();
     this.resource = undefined;
+  }
+
+  getJoinedVoiceConnection() {
+    return getVoiceConnection(this.guildId);
   }
 
   async play(interaction: ChatInputCommandInteraction<CacheType>, info: MusicInfo) {

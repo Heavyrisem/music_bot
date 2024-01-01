@@ -103,7 +103,12 @@ export const handleSearchMusic = async (interaction: ChatInputCommandInteraction
       };
 
       guild.musicManager.addQueue(musicInfo);
-      if (guild.musicManager.getPlayerState() === AudioPlayerStatus.Idle) {
+
+      const connection = guild.musicManager.getJoinedVoiceConnection();
+      if (
+        guild.musicManager.getPlayerState() !== AudioPlayerStatus.Playing ||
+        connection?.state.status !== 'ready'
+      ) {
         guild.musicManager.play(interaction, musicInfo);
         await userResponse.delete();
       } else {
@@ -139,6 +144,9 @@ export const handleGetQueue = async (interaction: ChatInputCommandInteraction<Ca
 export const handleSkip = async (interaction: ChatInputCommandInteraction<CacheType>) => {
   if (!interaction.guildId) throw new Error('알 수 없는 서버입니다.');
   const guild = guildManager.getGuildOrCreate(interaction.guildId);
+
+  if (guild.musicManager.getQueue().length === 0)
+    return await interaction.reply({ content: '`큐가 비어있습니다`' });
 
   guild.musicManager.skipCurrent();
   await interaction.reply({ content: '`현재 노래를 스킵했습니다`' });
