@@ -35,7 +35,6 @@ export const handleSearchMusic = async (interaction: ChatInputCommandInteraction
   if (url) {
     const youtubeId = url[url.length - 1];
     const info = await ytdl.getInfo(youtubeId);
-    console.log(info.videoDetails);
 
     const musicInfo: MusicInfo = {
       youtubeId,
