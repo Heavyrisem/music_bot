@@ -105,6 +105,7 @@ export const handleSearchMusic = async (interaction: ChatInputCommandInteraction
 
       const connection = guild.musicManager.getJoinedVoiceConnection();
       if (
+        guild.musicManager.getJoinedVoiceConnection() !== undefined ||
         guild.musicManager.getPlayerState() !== AudioPlayerStatus.Playing ||
         connection?.state.status !== 'ready'
       ) {

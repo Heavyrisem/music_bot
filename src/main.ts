@@ -8,6 +8,7 @@ import {
   handleGetQueue,
   handleSearchMusic,
   handleSkip,
+  handleStop,
   testHandler,
 } from './command/handler/music';
 import { registerCommands } from './command/register-command';
@@ -71,6 +72,10 @@ client.on('interactionCreate', async (interaction) => {
       case Command.SKIP:
       case Command.SKIP_1:
         await handleSkip(interaction);
+        break;
+      case Command.STOP:
+      case Command.STOP_1:
+        await handleStop(interaction);
         break;
       default:
         await interaction.reply({ content: `\`명령어를 찾을 수 없습니다.\``, ephemeral: true });
