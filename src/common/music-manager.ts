@@ -60,13 +60,13 @@ export class MusicManager {
   }
 
   async play(interaction: ChatInputCommandInteraction<CacheType>, info: MusicInfo) {
-    const videoInfo = await ytdl.getInfo(info.youtubeId);
-    const format = ytdl.chooseFormat(videoInfo.formats, { filter: 'audioonly' });
+    // const videoInfo = await ytdl.getInfo(info.youtubeId);
+    // const format = ytdl.chooseFormat(videoInfo.formats, { filter: 'audioonly' });
 
-    const stream = ytdl(info.youtubeId, { format });
-    // const { stream, type } = await playdl.stream(videoInfo.videoDetails.videoId, {
-    //   discordPlayerCompatibility: true,
-    // });
+    // const stream = ytdl(info.youtubeId, { format });
+    const { stream, type } = await playdl.stream(info.youtubeId, {
+      discordPlayerCompatibility: true,
+    });
     const connection = this.joinVoiceChannel(interaction);
     // const connection = await getVoiceConnection(this.guildId);
     if (!connection) interaction.channel?.send('`음성 채널 연결에 실패했어요`');
@@ -76,7 +76,7 @@ export class MusicManager {
     });
 
     // console.log(type);
-    this.resource = createAudioResource(stream, { inlineVolume: true });
+    this.resource = createAudioResource(stream, { inlineVolume: true, inputType: type });
     this.resource.volume?.setVolume(50 / 1000);
 
     this.player.play(this.resource);

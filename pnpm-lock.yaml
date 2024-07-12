@@ -21,11 +21,11 @@ importers:
         specifier: ^16.3.1
         version: 16.3.1
       libsodium-wrappers:
-        specifier: ^0.7.13
-        version: 0.7.13
+        specifier: ^0.7.14
+        version: 0.7.14
       play-dl:
-        specifier: ^1.9.7
-        version: 1.9.7
+        specifier: github:Yoduh/play-dl-test
+        version: https://codeload.github.com/Yoduh/play-dl-test/tar.gz/e3b147a7d2d7afd745c00dc78023ad46e20bbd94
       pretty-print-ms:
         specifier: ^1.0.5
         version: 1.0.5
@@ -1029,11 +1029,11 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
-  libsodium-wrappers@0.7.13:
-    resolution: {integrity: sha512-kasvDsEi/r1fMzKouIDv7B8I6vNmknXwGiYodErGuESoFTohGSKZplFtVxZqHaoQ217AynyIFgnOVRitpHs0Qw==}
+  libsodium-wrappers@0.7.14:
+    resolution: {integrity: sha512-300TtsePizhJZ7HjLmWr6hLHAgJUxIGhapSw+EwfCtDuWaEmEdGXSQv6j6qFw0bs9l4vS2NH9BtOHfXAq6h5kQ==}
 
-  libsodium@0.7.13:
-    resolution: {integrity: sha512-mK8ju0fnrKXXfleL53vtp9xiPq5hKM0zbDQtcxQIsSmxNgSxqCj6R7Hl9PkrNe2j29T4yoDaF7DJLK9/i5iWUw==}
+  libsodium@0.7.14:
+    resolution: {integrity: sha512-/pOd7eO6oZrfORquRTC4284OUJFcMi8F3Vnc9xtRBT0teLfOUxWIItaBFF3odYjZ7nlJNwnLdUVEUFHxVyX/Sw==}
 
   locate-path@6.0.0:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
@@ -1253,8 +1253,9 @@ packages:
   play-audio@0.5.2:
     resolution: {integrity: sha512-ZAqHUKkQLix2Iga7pPbsf1LpUoBjcpwU93F1l3qBIfxYddQLhxS6GKmS0d3jV8kSVaUbr6NnOEcEMFvuX93SWQ==}
 
-  play-dl@1.9.7:
-    resolution: {integrity: sha512-KpgerWxUCY4s9Mhze2qdqPhiqd8Ve6HufpH9mBH3FN+vux55qSh6WJKDabfie8IBHN7lnrAlYcT/UdGax58c2A==}
+  play-dl@https://codeload.github.com/Yoduh/play-dl-test/tar.gz/e3b147a7d2d7afd745c00dc78023ad46e20bbd94:
+    resolution: {tarball: https://codeload.github.com/Yoduh/play-dl-test/tar.gz/e3b147a7d2d7afd745c00dc78023ad46e20bbd94}
+    version: 1.9.7
     engines: {node: '>=16.0.0'}
 
   prelude-ls@1.2.1:
@@ -2670,11 +2671,11 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  libsodium-wrappers@0.7.13:
+  libsodium-wrappers@0.7.14:
     dependencies:
-      libsodium: 0.7.13
+      libsodium: 0.7.14
 
-  libsodium@0.7.13: {}
+  libsodium@0.7.14: {}
 
   locate-path@6.0.0:
     dependencies:
@@ -2857,7 +2858,7 @@ snapshots:
 
   play-audio@0.5.2: {}
 
-  play-dl@1.9.7:
+  play-dl@https://codeload.github.com/Yoduh/play-dl-test/tar.gz/e3b147a7d2d7afd745c00dc78023ad46e20bbd94:
     dependencies:
       play-audio: 0.5.2
 

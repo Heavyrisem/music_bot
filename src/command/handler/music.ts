@@ -63,7 +63,7 @@ export const handleSearchMusic = async (interaction: ChatInputCommandInteraction
           .setLabel(
             `${index + 1}. ${item.title} - ${item.artists
               ?.map((artist) => artist.name)
-              .join(', ')} (${item.duration?.label})`,
+              .join(', ')} (${item.duration?.label})`.slice(0, 80),
           )
           .setStyle(ButtonStyle.Primary),
       ),
@@ -105,9 +105,8 @@ export const handleSearchMusic = async (interaction: ChatInputCommandInteraction
 
       const connection = guild.musicManager.getJoinedVoiceConnection();
       if (
-        guild.musicManager.getJoinedVoiceConnection() !== undefined ||
-        guild.musicManager.getPlayerState() !== AudioPlayerStatus.Playing ||
-        connection?.state.status !== 'ready'
+        connection === undefined &&
+        guild.musicManager.getPlayerState() !== AudioPlayerStatus.Playing
       ) {
         guild.musicManager.play(interaction, musicInfo);
         await userResponse.delete();

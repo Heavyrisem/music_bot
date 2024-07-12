@@ -35,8 +35,8 @@
     "@heavyrisem/ytmusic": "^0.10.4",
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
-    "libsodium-wrappers": "^0.7.13",
-    "play-dl": "^1.9.7",
+    "libsodium-wrappers": "^0.7.14",
+    "play-dl": "github:Yoduh/play-dl-test",
     "pretty-print-ms": "^1.0.5",
     "ytdl-core": "^4.11.5",
     "zod": "^3.22.4"
