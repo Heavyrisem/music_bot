@@ -1,8 +1,7 @@
 # Add lockfile and package.json's of isolated subworkspace
-FROM node:18-alpine AS installer
+FROM node:20 AS installer
 ARG NPM_TOKEN
-RUN apk add --update alpine-sdk
-RUN apk add --no-cache python3 py3-pip
+RUN apt-get update && apt-get install -y build-essential python3 python3-pip
 
 WORKDIR /app
 RUN corepack enable
@@ -11,14 +10,13 @@ COPY ./package.json ./package.json
 COPY ./pnpm-lock.yaml ./pnpm-lock.yaml
 RUN pnpm install --frozen-lockfile
 
-FROM node:18-alpine AS sourcer
+FROM node:20 AS sourcer
 WORKDIR /app
-
 
 COPY --from=installer /app/ .
 COPY ./dist ./dist
 
-FROM node:18-alpine as runner
+FROM node:20 as runner
 WORKDIR /app
 RUN corepack enable
 COPY --from=sourcer /app/ .

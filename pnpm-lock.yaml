@@ -11,9 +11,6 @@ importers:
       '@discordjs/voice':
         specifier: ^0.17.0
         version: 0.17.0(@discordjs/opus@0.9.0)(ffmpeg-static@5.2.0)
-      '@heavyrisem/ytmusic':
-        specifier: ^0.10.4
-        version: 0.10.4
       discord.js:
         specifier: ^14.14.1
         version: 14.14.1
@@ -270,9 +267,6 @@ packages:
   '@fastify/busboy@2.1.0':
     resolution: {integrity: sha512-+KpH+QxZU7O4675t3mnkQKcZZg56u+K/Ct2K+N2AZYNVK8kyeo/bI18tI8aPm3tvNNRyTWfj6s5tnGNlcbQRsA==}
     engines: {node: '>=14'}
-
-  '@heavyrisem/ytmusic@0.10.4':
-    resolution: {integrity: sha512-zP7Rt4u1sD3MhUjMnW2FZ3bckvhFmMCgXeQ5cA12yq1jt23EUZsL+Eo698RxY46dbghTcmd3dBnLcx+CdahyrA==, tarball: https://npm.pkg.github.com/download/@heavyrisem/ytmusic/0.10.4/29fb6da65c73e48831b964a1a4a9bb9453ad181e}
 
   '@humanwhocodes/config-array@0.11.13':
     resolution: {integrity: sha512-JSBDMiDKSzQVngfRjOdFXgFfklaXI4K9nLF49Auh21lmBWRLIK3+xTErTWD4KU54pb6coM6ESE7Awz/FNU3zgQ==}
@@ -1949,10 +1943,6 @@ snapshots:
   '@eslint/js@8.56.0': {}
 
   '@fastify/busboy@2.1.0': {}
-
-  '@heavyrisem/ytmusic@0.10.4':
-    dependencies:
-      got: 11.8.6
 
   '@humanwhocodes/config-array@0.11.13':
     dependencies:
