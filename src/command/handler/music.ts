@@ -1,5 +1,4 @@
 import { AudioPlayerStatus } from '@discordjs/voice';
-import { searchMusics } from '@heavyrisem/ytmusic';
 import {
   ActionRowBuilder,
   ButtonBuilder,
@@ -9,6 +8,8 @@ import {
   DiscordjsError,
 } from 'discord.js';
 import ytdl from 'ytdl-core';
+// import { searchMusics } from '@heavyrisem/ytmusic';
+import YoutubeMusic from 'ytmusic-api';
 
 import { guildManager } from '../../common/guild-manager';
 import { MusicInfo } from '../../common/music-manager';
@@ -54,16 +55,16 @@ export const handleSearchMusic = async (interaction: ChatInputCommandInteraction
       });
     }
   } else {
-    const res = await searchMusics(query).then((res) => res.slice(0, 5));
+    const youtubeMusicApi = new YoutubeMusic();
+    await youtubeMusicApi.initialize();
+    const res = await youtubeMusicApi.searchSongs(query).then((res) => res.slice(0, 5));
 
     const userSelections = res.map((item, index) =>
       new ActionRowBuilder<ButtonBuilder>().addComponents(
         new ButtonBuilder()
           .setCustomId(String(index))
           .setLabel(
-            `${index + 1}. ${item.title} - ${item.artists
-              ?.map((artist) => artist.name)
-              .join(', ')} (${item.duration?.label})`.slice(0, 80),
+            `${index + 1}. ${item.name} - ${item.artist.name} (${item.duration})`.slice(0, 80),
           )
           .setStyle(ButtonStyle.Primary),
       ),
@@ -82,22 +83,22 @@ export const handleSearchMusic = async (interaction: ChatInputCommandInteraction
       await userResponse.edit({ content: '`불러오는 중 입니다...`', components: [] });
 
       const selectedItem = res[Number(userSelect.customId)];
-      if (!selectedItem.youtubeId)
+      if (!selectedItem.videoId)
         await interaction.editReply(`\`${userSelect.customId} 선택값이 잘못되었습니다.\``);
 
       if (
-        !selectedItem.youtubeId ||
-        !selectedItem.artists ||
-        !selectedItem.title ||
+        !selectedItem.videoId ||
+        !selectedItem.artist ||
+        !selectedItem.name ||
         !selectedItem.duration
       )
         throw new Error('잘못된 음악 정보입니다.');
 
       const musicInfo: MusicInfo = {
-        youtubeId: selectedItem.youtubeId,
-        artist: selectedItem.artists.map((artist) => artist.name).join(', '),
-        title: selectedItem.title,
-        duration: selectedItem.duration.label,
+        youtubeId: selectedItem.videoId,
+        artist: selectedItem.artist.name,
+        title: selectedItem.name,
+        duration: selectedItem.duration.toString(),
         ownedBy: interaction.user.username,
       };
 

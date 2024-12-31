@@ -39,6 +39,7 @@
     "play-dl": "github:Yoduh/play-dl-test",
     "pretty-print-ms": "^1.0.5",
     "ytdl-core": "^4.11.5",
+    "ytmusic-api": "^5.2.2",
     "zod": "^3.22.4"
   }
 }
